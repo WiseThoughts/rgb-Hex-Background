@@ -1,4 +1,4 @@
-# rgb-Hexagon-Background
+# rgb-Hex-Background
 
 cool rgb background using html and css
 
