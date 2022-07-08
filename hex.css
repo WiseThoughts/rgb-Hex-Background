@@ -25,7 +25,7 @@ body{
     position: relative;
     width: 100px;
     height: 110px;
-    margin: 2px;
+    margin: 1.25px;
     transition: 2s;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     background: linear-gradient(90deg, rgba(18, 17, 19, 1) 50%, rgba(0,0,0,1) 50%);
@@ -38,10 +38,10 @@ body{
 }
 .curser{
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
-    animation: anim 5s linear infinite;
+    animation: anim 3s linear infinite;
     visibility: hidden;
     transition: .1s;
     transform: translate(-50%, -50%);
@@ -58,10 +58,27 @@ body:hover .curser{
     background: radial-gradient(circle, rgba(0,255, 0,1) 23%  , rgba(0,0,0,.1) 100%);
     visibility: visible;
 }
-/*
-  60 orange
-  120 green
-  210
-  260
-  30
-*/
+
+.ripple {
+    width: 1000px;
+    height: 1000px;
+    opacity: 0;
+    transform: scale(0);
+    background: radial-gradient(circle, rgba(255,189, 51,1) 0%  , rgba(0,0,0,.1) 100%);
+    border-radius: 50%;
+    position: fixed;
+}
+
+.animate {
+    animation: ripple-mo 1.5s cubic-bezier(0, 0, 0.2, 1);
+}
+@keyframes ripple-mo {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(10);
+        opacity: 0;
+    }
+}

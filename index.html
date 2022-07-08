@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="hex.css">
 </head>
 <body>
+    <div class="ripple"></div>
     <div class="container">
         <div class="curser"></div>
         <div class="row">
@@ -300,14 +301,26 @@
         </div>
     </div>
     <script>
-        var curser = document.querySelector(".curser");
+        const curser = document.querySelector(".curser");
         document.addEventListener('mousemove', function(e){
-            var X = e.clientX;
-            var Y = e.clientY;
-
+            const X = e.clientX;
+            const Y = e.clientY;
             curser.style.left = X + "px";
             curser.style.top = Y + "px";
         })
+
+        const drawRipple = function(e) {
+            const x = e.clientX;
+            const y = e.clientY;
+            const node = document.querySelector(".ripple");
+            const newNode = node.cloneNode(true);
+            newNode.classList.add("animate");
+            newNode.style.left = e.clientX - 5 + "px";
+            newNode.style.top = e.clientY - 5 + "px";
+            node.parentNode.replaceChild(newNode, node);
+        };
+
+        window.addEventListener("click", drawRipple);
     </script>
 </body>
 </html>
